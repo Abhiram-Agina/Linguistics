@@ -117,5 +117,5 @@ if st.button('Analyze This'):
       df.plot.bar(x='Word',y='Count')
       st.pyplot()
 
-    if nav == "Word Length":
-      st.write('In Progress')
+  if nav == "Word Length":
+    st.write('In Progress')
