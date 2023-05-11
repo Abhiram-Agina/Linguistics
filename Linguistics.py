@@ -6,10 +6,6 @@ import matplotlib.pyplot as plt
 #Defining Parameters
 letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-#Splitting Input
-tokenizedInput = (textInput.lower()).split()
-#print(tokenizedInput)
-
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 #Inputting Text
@@ -43,6 +39,10 @@ if option == 'Plays':
   plays = tf.keras.utils.get_file('shakespeare.txt', 'https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt')
   textInput = open(plays, 'rb').read() #the entire corpus is now accessible via the variable named 'textInput'
   textInput = textInput.decode(encoding='utf-8') 
+
+#Splitting Input
+tokenizedInput = (textInput.lower()).split()
+#print(tokenizedInput)
 
 nav = st.sidebar.radio("Stats",["Your Text", "Sonnets", "Plays"])
 
