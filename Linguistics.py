@@ -3,14 +3,20 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-import networkx as nx
-import seaborn as sns
+#Defining Parameters
+letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+#Splitting Input
+tokenizedInput = (textInput.lower()).split()
+#print(tokenizedInput)
+
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 #Inputting Text
-st.markdown("[Click here for Shakespeare Sonnets](https://nosweatshakespeare.com/sonnets/)")
-st.markdown("[Or have Captain Kirk read them to you](https://www.youtube.com/hashtag/asonnetaday)")
+option = st.selectbox('Which text would you like to analyze?', ('My Text', 'Sonnets', 'Plays'))
 
-textInput = st.text_area('Enter a Sonnet/Text to analyze:', '''
+if option == 'My Text':
+  textInput = st.text_area('Enter your text here to analyze:', '''
   Shall I compare thee to a summer’s day?
   Thou art more lovely and more temperate:
   Rough winds do shake the darling buds of May,
@@ -27,55 +33,57 @@ textInput = st.text_area('Enter a Sonnet/Text to analyze:', '''
   So long lives this and this gives life to thee.
   ''', height=400)
 
-#Defining Parameters
-letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+if option == 'Sonnets':
+  #sonnets = tf.keras.utils.get_file('shakespeare.txt', 'https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt')
+  sonnets = tf.keras.utils.get_file('https://raw.githubusercontent.com/PraveenKumarSridhar/poetry-generator/develop/src/Sonnets/data/sonnets.txt')  
+  textInput = open(sonnets, 'rb').read() #the entire corpus is now accessible via the variable named 'textInput'
+  textInput = textInput.decode(encoding='utf-8')
+  
+if option == 'Plays':
+  plays = tf.keras.utils.get_file('shakespeare.txt', 'https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt')
+  textInput = open(plays, 'rb').read() #the entire corpus is now accessible via the variable named 'textInput'
+  textInput = textInput.decode(encoding='utf-8') 
 
-#Splitting Input
-tokenizedInput = (textInput.lower()).split()
-#print(tokenizedInput)
-
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
-nav = st.sidebar.radio("Stats",["Any Position", "Starting Letters", "Words"])
+nav = st.sidebar.radio("Stats",["Your Text", "Sonnets", "Plays"])
 
 if st.button('Analyze This'):
   if nav == "Any Position":
-        #Counting Letters - TOTAL
-        letterCounts = []
+      #Counting Letters - TOTAL
+      letterCounts = []
+      counter = 0
+
+      for match in letterList:
         counter = 0
+        for token in tokenizedInput:
+          for letter in token:
+            if match == letter:
+              counter = counter + 1
+        letterCounts.append(counter)
 
-        for match in letterList:
-          counter = 0
-          for token in tokenizedInput:
-            for letter in token:
-              if match == letter:
-                counter = counter + 1
-          letterCounts.append(counter)
-
-        #Crafting Graph - TOTAL
-        plt.bar(letterList, letterCounts)
-        plt.title('Most Used Letters - Any Position')
-        plt.xlabel('Letter')
-        plt.ylabel('Frequency')
-        plt.show()
-        st.pyplot()
+      #Crafting Graph - TOTAL
+      plt.bar(letterList, letterCounts)
+      plt.title('Most Used Letters - Any Position')
+      plt.xlabel('Letter')
+      plt.ylabel('Frequency')
+      plt.show()
+      st.pyplot()
 
   if nav == "Starting Letters":
-        #Counting Letters - START
-        startCounts = []
-        counter = 0
+      #Counting Letters - START
+      startCounts = []
+      counter = 0
 
-        for match in letterList:
-              counter = 0
-              for token in tokenizedInput:
-                    if match == token[0]:
-                      counter = counter + 1
-              startCounts.append(counter)
+      for match in letterList:
+            counter = 0
+            for token in tokenizedInput:
+                  if match == token[0]:
+                    counter = counter + 1
+            startCounts.append(counter)
 
-        #Crafting Graph - START
-        plt.bar(letterList, startCounts)
-        plt.title('Most Used Letters - Starting')
-        plt.xlabel('Letter')
-        plt.ylabel('Frequency')
-        plt.show()
-        st.pyplot()
+      #Crafting Graph - START
+      plt.bar(letterList, startCounts)
+      plt.title('Most Used Letters - Starting')
+      plt.xlabel('Letter')
+      plt.ylabel('Frequency')
+      plt.show()
+      st.pyplot()
