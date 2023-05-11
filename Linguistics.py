@@ -44,7 +44,7 @@ if option == 'Plays':
 tokenizedInput = (textInput.lower()).split()
 #print(tokenizedInput)
 
-nav = st.sidebar.radio("Stats",["Letter Frequency", "Starting Letter", "Word Frequency"])
+nav = st.sidebar.radio("Stats",["Letter Frequency", "Starting Letter", "Word Frequency", "Word Length"])
 
 if st.button('Analyze This'):
   if nav == "Letter Frequency":
@@ -116,3 +116,6 @@ if st.button('Analyze This'):
       df = pd.DataFrame(lst, columns = ['Word', 'Count'])
       df.plot.bar(x='Word',y='Count')
       st.pyplot()
+
+    if nav == "Word Length":
+      st.write('In Progress')
