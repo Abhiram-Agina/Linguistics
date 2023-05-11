@@ -30,10 +30,9 @@ if option == 'My Text':
   ''', height=400)
 
 if option == 'Sonnets':
-  textInput = pd.read_fwf('data/Sonnets.txt')  
-  
-if option == 'Plays':
-  textInput = pd.read_fwf('data/Sonnets.txt')  
+  sonnets = open("data/Sonnets.txt","r")
+  textInput = sonnets.read()
+  sonnets.close() 
 
 #Splitting Input
 tokenizedInput = (textInput.lower()).split()
