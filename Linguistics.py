@@ -48,7 +48,7 @@ if nav == "Any Position":
 
       #Crafting Graph - TOTAL
       plt.bar(letterList, letterCounts)
-      plt.title('Most Used Letters - TOTAL')
+      plt.title('Most Used Letters - Any Position')
       plt.xlabel('Letter')
       plt.ylabel('Frequency')
       plt.show()
