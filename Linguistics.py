@@ -2,7 +2,6 @@ import streamlit as st
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import tensorflow as tf
 
 #Defining Parameters
 letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -31,15 +30,10 @@ if option == 'My Text':
   ''', height=400)
 
 if option == 'Sonnets':
-  #sonnets = tf.keras.utils.get_file('shakespeare.txt', 'https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt')
-  sonnets = tf.keras.utils.get_file('https://raw.githubusercontent.com/PraveenKumarSridhar/poetry-generator/develop/src/Sonnets/data/sonnets.txt')  
-  textInput = open(sonnets, 'rb').read() #the entire corpus is now accessible via the variable named 'textInput'
-  textInput = textInput.decode(encoding='utf-8')
+  textInput = pd.read_fwf('data/Sonnets.txt')  
   
 if option == 'Plays':
-  plays = tf.keras.utils.get_file('shakespeare.txt', 'https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt')
-  textInput = open(plays, 'rb').read() #the entire corpus is now accessible via the variable named 'textInput'
-  textInput = textInput.decode(encoding='utf-8') 
+  textInput = pd.read_fwf('data/Sonnets.txt')  
 
 #Splitting Input
 tokenizedInput = (textInput.lower()).split()
