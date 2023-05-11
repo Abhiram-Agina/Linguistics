@@ -31,6 +31,8 @@ letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', '
 tokenizedInput = (textInput.lower()).split()
 #print(tokenizedInput)
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 if nav == "Letters":
   #Counting Letters - TOTAL
   letterCounts = []
