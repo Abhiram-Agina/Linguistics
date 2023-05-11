@@ -33,6 +33,11 @@ if option == 'Sonnets':
   sonnets = open("data/Sonnets.txt","r")
   textInput = sonnets.read()
   sonnets.close() 
+  
+if option == 'Plays':
+  plays = open("data/Plays.txt","r")
+  textInput = sonnets.read()
+  plays.close()  
 
 #Splitting Input
 tokenizedInput = (textInput.lower()).split()
