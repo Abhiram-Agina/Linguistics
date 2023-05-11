@@ -7,20 +7,25 @@ import networkx as nx
 import seaborn as sns
 
 #Inputting Text
-textInput = """Not marble, nor the gilded monuments
-Of princes, shall outlive this powerful rhyme;
-But you shall shine more bright in these contents
-Than unswept stone, besmear’d with sluttish time.
-When wasteful war shall statues overturn,
-And broils root out the work of masonry,
-Nor Mars his sword, nor war’s quick fire shall burn
-The living record of your memory.
-‘Gainst death, and all oblivious enmity
-Shall you pace forth; your praise shall still find room
-Even in the eyes of all posterity
-That wear this world out to the ending doom.
-So, till the judgment that yourself arise,
-You live in this, and dwell in lovers’ eyes."""
+st.markdown("[Click here for Shakespeare Sonnets](https://nosweatshakespeare.com/sonnets/)")
+st.markdown("[Or have Captain Kirk read them to you](https://www.youtube.com/hashtag/asonnetaday)")
+
+textInput = st.text_area('Enter a Sonnet to analyze:', '''
+  Shall I compare thee to a summer’s day?
+  Thou art more lovely and more temperate:
+  Rough winds do shake the darling buds of May,
+  And summer’s lease hath all too short a date:
+  Sometime too hot the eye of heaven shines,
+  And often is his gold complexion dimm’d;
+  And every fair from fair sometime declines,
+  By chance or nature’s changing course untrimm’d;
+  But thy eternal summer shall not fade
+  Nor lose possession of that fair thou owest;
+  Nor shall Death brag thou wander’st in his shade,
+  When in eternal lines to time thou growest:
+  So long as men can breathe or eyes can see,
+  So long lives this and this gives life to thee.
+  ''', height=400)
 
 #Defining Parameters
 letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
