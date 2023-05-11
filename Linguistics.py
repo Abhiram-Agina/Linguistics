@@ -35,7 +35,7 @@ if option == 'Sonnets':
   sonnets.close() 
   
 if option == 'Plays':
-  plays = open("data/Plays.txt","r")
+  plays = open("data/t8.shakespeare.txt","r")
   textInput = sonnets.read()
   plays.close()  
 
