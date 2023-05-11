@@ -31,7 +31,7 @@ tokenizedInput = (textInput.lower()).split()
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-nav = st.sidebar.radio("Stats",["Letters", "Starting Letters", "Words"])
+nav = st.sidebar.radio("Stats",["Any Position", "Starting Letters", "Words"])
 
 if nav == "Letters":
       #Counting Letters - TOTAL
