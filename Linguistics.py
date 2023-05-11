@@ -36,7 +36,7 @@ if option == 'Sonnets':
   
 if option == 'Plays':
   plays = open("data/t8.shakespeare.txt","r")
-  textInput = sonnets.read()
+  textInput = plays.read()
   plays.close()  
 
 #Splitting Input
