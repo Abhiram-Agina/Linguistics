@@ -108,11 +108,11 @@ if st.button('Analyze This'):
               wordcount[word] += 1
       # Print most common words
       word_counter = collections.Counter(wordcount)
-      for word, count in word_counter.most_common(20):
+      for word, count in word_counter.most_common(50):
           print(word, ": ", count)
       # Create a data frame of the most common words 
       # Draw a bar chart
-      lst = word_counter.most_common(20)
+      lst = word_counter.most_common(50)
       df = pd.DataFrame(lst, columns = ['Word', 'Count'])
       df.plot.bar(x='Word',y='Count')
       st.pyplot()
