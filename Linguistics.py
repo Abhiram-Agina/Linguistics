@@ -49,6 +49,6 @@ if nav == "Letters":
   #Crafting Graph - TOTAL
   plt.title('Most Used Letters - TOTAL')  
   plt.figure(figsize=(10,10))
-  ax = sns.barplot(x='letterList',y='letterCounts',data=textInput)
+  ax = sns.barplot(x='letterList',y='letterCounts',data=tokenizedInput)
   ax.set(xlabel='Letters', ylabel='Frequency')
   st.pyplot()
