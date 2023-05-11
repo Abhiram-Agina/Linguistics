@@ -10,7 +10,7 @@ import seaborn as sns
 st.markdown("[Click here for Shakespeare Sonnets](https://nosweatshakespeare.com/sonnets/)")
 st.markdown("[Or have Captain Kirk read them to you](https://www.youtube.com/hashtag/asonnetaday)")
 
-textInput = st.text_area('Enter a Sonnet to analyze:', '''
+textInput = st.text_area('Enter a Sonnet/Text to analyze:', '''
   Shall I compare thee to a summer’s day?
   Thou art more lovely and more temperate:
   Rough winds do shake the darling buds of May,
