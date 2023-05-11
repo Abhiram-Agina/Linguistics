@@ -6,8 +6,6 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import seaborn as sns
 
-nav = st.sidebar.radio("Stats",["Letters", "Starting Letters", "Words"])
-
 #Inputting Text
 textInput = """Not marble, nor the gilded monuments
 Of princes, shall outlive this powerful rhyme;
@@ -33,23 +31,47 @@ tokenizedInput = (textInput.lower()).split()
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+nav = st.sidebar.radio("Stats",["Letters", "Starting Letters", "Words"])
+
 if nav == "Letters":
-  #Counting Letters - TOTAL
-  letterCounts = []
-  counter = 0
+      #Counting Letters - TOTAL
+      letterCounts = []
+      counter = 0
 
-  for match in letterList:
-    counter = 0
-    for token in tokenizedInput:
-      for letter in token:
-        if match == letter:
-          counter = counter + 1
-    letterCounts.append(counter)
+      for match in letterList:
+        counter = 0
+        for token in tokenizedInput:
+          for letter in token:
+            if match == letter:
+              counter = counter + 1
+        letterCounts.append(counter)
 
-  #Crafting Graph - TOTAL
-  plt.bar(letterList, letterCounts)
-  plt.title('Most Used Letters - TOTAL')
-  plt.xlabel('Letter')
-  plt.ylabel('Frequency')
-  plt.show()
-  st.pyplot()
+      #Crafting Graph - TOTAL
+      plt.bar(letterList, letterCounts)
+      plt.title('Most Used Letters - TOTAL')
+      plt.xlabel('Letter')
+      plt.ylabel('Frequency')
+      plt.show()
+      st.pyplot()
+
+      if nav == "Starting Letters":
+        #Counting Letters - START
+        startCounts = []
+        counter = 0
+
+        for match in letterList:
+          counter = 0
+          for token in tokenizedInput:
+            if match == token[0]:
+              counter = counter + 1
+          startCounts.append(counter)
+        #print(letterList)
+        #print(startCounts)
+        
+        #Crafting Graph - START
+        plt.bar(letterList, startCounts)
+        plt.title('Most Used Letters - Starting')
+        plt.xlabel('Letter')
+        plt.ylabel('Frequency')
+        plt.show()
+        st.pyplot()
