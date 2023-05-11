@@ -2,6 +2,7 @@ import streamlit as st
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import collections
 
 #Defining Parameters
 letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -43,10 +44,10 @@ if option == 'Plays':
 tokenizedInput = (textInput.lower()).split()
 #print(tokenizedInput)
 
-nav = st.sidebar.radio("Stats",["Any Position", "Starting Position"])
+nav = st.sidebar.radio("Stats",["Letter Frequency", "Starting Letter", "Word Frequency"])
 
 if st.button('Analyze This'):
-  if nav == "Any Position":
+  if nav == "Letter Frequency":
       #Counting Letters - TOTAL
       letterCounts = []
       counter = 0
@@ -67,7 +68,7 @@ if st.button('Analyze This'):
       plt.show()
       st.pyplot()
 
-  if nav == "Starting Position":
+  if nav == "Starting Letter":
       #Counting Letters - START
       startCounts = []
       counter = 0
@@ -85,4 +86,33 @@ if st.button('Analyze This'):
       plt.xlabel('Letter')
       plt.ylabel('Frequency')
       plt.show()
+      st.pyplot()
+  
+  if nav == "Word Frequency":
+      # Instantiate a dictionary, and for every word in the file, 
+      # Add to the dictionary if it doesn't exist. If it does, increase the count.
+      wordcount = {}
+      # To eliminate duplicates, remember to split by punctuation, and use case demiliters.
+      for word in textInput.lower().split():
+          word = word.replace(".","")
+          word = word.replace(",","")
+          word = word.replace(":","")
+          word = word.replace("\"","")
+          word = word.replace("!","")
+          word = word.replace("â€œ","")
+          word = word.replace("â€˜","")
+          word = word.replace("*","")
+          if word not in wordcount:
+              wordcount[word] = 1
+          else:
+              wordcount[word] += 1
+      # Print most common words
+      word_counter = collections.Counter(wordcount)
+      for word, count in word_counter.most_common(20):
+          print(word, ": ", count)
+      # Create a data frame of the most common words 
+      # Draw a bar chart
+      lst = word_counter.most_common(20)
+      df = pd.DataFrame(lst, columns = ['Word', 'Count'])
+      df.plot.bar(x='Word',y='Count')
       st.pyplot()
