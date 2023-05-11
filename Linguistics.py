@@ -38,43 +38,44 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 nav = st.sidebar.radio("Stats",["Any Position", "Starting Letters", "Words"])
 
-if nav == "Any Position":
-      #Counting Letters - TOTAL
-      letterCounts = []
-      counter = 0
-
-      for match in letterList:
+st.button('Analyze This'):
+  if nav == "Any Position":
+        #Counting Letters - TOTAL
+        letterCounts = []
         counter = 0
-        for token in tokenizedInput:
-          for letter in token:
-            if match == letter:
-              counter = counter + 1
-        letterCounts.append(counter)
 
-      #Crafting Graph - TOTAL
-      plt.bar(letterList, letterCounts)
-      plt.title('Most Used Letters - Any Position')
-      plt.xlabel('Letter')
-      plt.ylabel('Frequency')
-      plt.show()
-      st.pyplot()
+        for match in letterList:
+          counter = 0
+          for token in tokenizedInput:
+            for letter in token:
+              if match == letter:
+                counter = counter + 1
+          letterCounts.append(counter)
 
-if nav == "Starting Letters":
-      #Counting Letters - START
-      startCounts = []
-      counter = 0
+        #Crafting Graph - TOTAL
+        plt.bar(letterList, letterCounts)
+        plt.title('Most Used Letters - Any Position')
+        plt.xlabel('Letter')
+        plt.ylabel('Frequency')
+        plt.show()
+        st.pyplot()
 
-      for match in letterList:
-            counter = 0
-            for token in tokenizedInput:
-                  if match == token[0]:
-                    counter = counter + 1
-            startCounts.append(counter)
+  if nav == "Starting Letters":
+        #Counting Letters - START
+        startCounts = []
+        counter = 0
 
-      #Crafting Graph - START
-      plt.bar(letterList, startCounts)
-      plt.title('Most Used Letters - Starting')
-      plt.xlabel('Letter')
-      plt.ylabel('Frequency')
-      plt.show()
-      st.pyplot()
+        for match in letterList:
+              counter = 0
+              for token in tokenizedInput:
+                    if match == token[0]:
+                      counter = counter + 1
+              startCounts.append(counter)
+
+        #Crafting Graph - START
+        plt.bar(letterList, startCounts)
+        plt.title('Most Used Letters - Starting')
+        plt.xlabel('Letter')
+        plt.ylabel('Frequency')
+        plt.show()
+        st.pyplot()
