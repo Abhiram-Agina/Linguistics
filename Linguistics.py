@@ -64,9 +64,7 @@ if nav == "Starting Letters":
             for token in tokenizedInput:
                   if match == token[0]:
                     counter = counter + 1
-                  startCounts.append(counter)
-                  #print(letterList)
-                  #print(startCounts)
+            startCounts.append(counter)
 
       #Crafting Graph - START
       plt.bar(letterList, startCounts)
