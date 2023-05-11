@@ -38,7 +38,7 @@ if option == 'Sonnets':
 tokenizedInput = (textInput.lower()).split()
 #print(tokenizedInput)
 
-nav = st.sidebar.radio("Stats",["Your Text", "Sonnets", "Plays"])
+nav = st.sidebar.radio("Stats",["Any Position", "Starting Position"])
 
 if st.button('Analyze This'):
   if nav == "Any Position":
@@ -62,7 +62,7 @@ if st.button('Analyze This'):
       plt.show()
       st.pyplot()
 
-  if nav == "Starting Letters":
+  if nav == "Starting Position":
       #Counting Letters - START
       startCounts = []
       counter = 0
