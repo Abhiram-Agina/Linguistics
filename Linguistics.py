@@ -50,3 +50,4 @@ if nav == "Letters":
   plt.xlabel('Letter')
   plt.ylabel('Frequency')
   plt.show()
+  st.pyplot()
