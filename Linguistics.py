@@ -33,7 +33,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 nav = st.sidebar.radio("Stats",["Any Position", "Starting Letters", "Words"])
 
-if nav == "Letters":
+if nav == "Any Position":
       #Counting Letters - TOTAL
       letterCounts = []
       counter = 0
